@@ -28,7 +28,7 @@ Build a webshop that people can use to order some merchandise from the Greenfox 
 
 ### POST `/warehouse/summary`
 - this endpoint should receive all the information of the selected item
-- this endpoint should render an other HTML after receiving the data, which should display the extract of the selected item in a table:
+- this endpoint should render an other HTML after receiving the clothes, which should display the extract of the selected item in a table:
   - item name
   - manufacturer
   - category

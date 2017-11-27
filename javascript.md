@@ -8,7 +8,7 @@ Build a webshop that people can use to order some merchandise from the Greenfox 
 
 The main page should render an HTML displaying the full list of clothes(explained above)
 
-The table should be automatically rendred by the data returned from the `/warehouse` endpoint.
+The table should be automatically rendred by the clothes returned from the `/warehouse` endpoint.
 
 ![main](assets/main2.png)
 

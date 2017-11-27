@@ -9,14 +9,34 @@
     <h1>Green Fox Fashion Web Store</h1>
 </div>
 <div>
-
-        <select>
-            <option value="0" th:text="'Select item name'" ></option>
-            <option th:each="item : ${items}"
-
-                    th:text="${assignee.name}"></option>
+    <form th:action="@{'warehouse/additem'}" th:object="${itemToBuy}" method="post">
+        <select >
+            <option value="0" th:text="'select item name'" ></option>
+            <option th:each="item : ${list}"
+                    th:value="${item.itemName}"
+                    th:text="${item.itemName}"></option>
         </select>
+        <select >
+            <option value="0" th:text="'select size'" ></option>
+            <option th:each="item : ${list}"
+                    th:value="${item.size}"
+                    th:text="${item.size}"></option>
+        </select>
+        <input type="hidden" th:field="*{manufacturer}" th:value="${item.manufacturer}"/>
+        <input type="hidden" th:field="*{category}" th:value="${item.category}"/>
+        <input type="hidden" th:field="*{unitPrice}" th:value="${item.unitPrice}"/>
+        <input type="hidden" th:field="*{id}" th:value="${item.id}"/>
+        <button type="submit" value="Submit">Get Total</button>
+ <!--       <select >
+            <option value="0" th:text="'Select item name'" ></option>
+            <option th:text="'s'" th:value="'s'" th:field="*{size}"></option>
+            <option th:text="'m'" th:value="'m'" th:field="*{size}"></option>
+            <option th:text="'l'" th:value="'s'" th:field="*{size}"></option>
+            <option th:text="'xl'" th:value="'xl'" th:field="*{size}"></option>
+            <option th:text="'xxl'" th:value="'xxl'" th:field="*{size}"></option>
+        </select>-->
 
+    </form>
     <table>
         <thead>
         <tr align="left">

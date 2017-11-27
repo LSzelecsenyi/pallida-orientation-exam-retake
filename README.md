@@ -28,7 +28,7 @@ All classes should import the following database:
 
 | c# | java | javascript |
 |-----|-----|-----|
-|[clothing.sql](data/clothing_cs.sql)|[clothing.sql](data/clothing.sql)|[clothing_js.sql](data/clothing.sql)|
+|[clothing.sql](clothes/clothing_cs.sql)|[clothing.sql](clothes/clothing.sql)|[clothing_js.sql](clothes/clothing.sql)|
 
 CREATE A SCREENSHOT OF THE DATABASE YOU IMPORTED AND COMMIT IT TO THE REPO
 

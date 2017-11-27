@@ -1,5 +1,6 @@
 package com.greenfox.clothing.controller;
 
+import com.greenfox.clothing.model.Response;
 import com.greenfox.clothing.model.Warehouse;
 import com.greenfox.clothing.repo.ClothingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,19 @@ public class MController {
         }
         model.addAttribute("basket", basket);
         return "summary";
+    }
+
+    @GetMapping("/warehouse/query")
+    @ResponseBody
+    public Response api(@RequestParam double price, @RequestParam String type) {
+        List<Warehouse> list = new ArrayList<>();
+        if (type.equals("lower")) {
+            list=repo.findAllByUnitPriceIsLessThan(price);
+        } else if (type.equals("higher")) {
+            list=repo.findAllByUnitPriceIsGreaterThan(price);
+        } else if (type.equals("equals")) {
+            list=repo.findAllByUnitPriceEquals(price);
+        }
+        return new Response("ok", list);
     }
 }

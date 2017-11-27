@@ -9,6 +9,14 @@
     <h1>Green Fox Fashion Web Store</h1>
 </div>
 <div>
+
+        <select>
+            <option value="0" th:text="'Select item name'" ></option>
+            <option th:each="item : ${items}"
+
+                    th:text="${assignee.name}"></option>
+        </select>
+
     <table>
         <thead>
         <tr align="left">

@@ -1,13 +1,14 @@
 package com.greenfox.clothing.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Warehouse {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private long id;
+    private Integer id;
 
     @Column(name = "item_name")
     private String itemName;
@@ -16,26 +17,26 @@ public class Warehouse {
     private String size;
     @Column(name = "unit_price")
     private double unitPrice;
-    @Column(name = "in_store")
-    private boolean inStore;
 
-    public Warehouse() {
-    }
-
-    public Warehouse(String itemName, String manufacturer, String category, String size, double unitPrice, boolean inStore) {
+    public Warehouse(String itemName, String manufacturer, String category, String size, double unitPrice) {
         this.itemName = itemName;
         this.manufacturer = manufacturer;
         this.category = category;
         this.size = size;
         this.unitPrice = unitPrice;
-        this.inStore = inStore;
     }
 
-    public long getId() {
+    public Warehouse() {
+
+    }
+
+
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -79,11 +80,21 @@ public class Warehouse {
         this.unitPrice = unitPrice;
     }
 
-    public boolean isInStore() {
-        return inStore;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Warehouse warehouse = (Warehouse) o;
+        return Double.compare(warehouse.unitPrice, unitPrice) == 0 &&
+                Objects.equals(id, warehouse.id) &&
+                Objects.equals(itemName, warehouse.itemName) &&
+                Objects.equals(manufacturer, warehouse.manufacturer) &&
+                Objects.equals(category, warehouse.category) &&
+                Objects.equals(size, warehouse.size);
     }
 
-    public void setInStore(boolean inStore) {
-        this.inStore = inStore;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, itemName, manufacturer, category, size, unitPrice);
     }
 }

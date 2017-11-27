@@ -1,8 +1,11 @@
 
 # Why would you declare your class as an abstract class?
 
-The advantage of using an abstract class is that you can group several related classes together as siblings.
-The abstract class and inheritance collectively ensures that most of the code are written using abstract and higher level classes, so that it can leverage Inheritance and Polymorphism to support future changes.
+
+
+Using an abstract class is good because with them you you can make groups from several related classes.
+Using abstract class with the help of inheritance makes sure the code are written using abstract and higher level classes. This helps to ensure that the higher classes' properties and behaviour will be implemented.
+
 
 Read more: http://www.java67.com/2014/06/why-abstract-class-is-important-in-java.html#ixzz4zdM0Xy9a
 

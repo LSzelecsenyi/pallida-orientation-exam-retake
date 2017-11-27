@@ -14,18 +14,22 @@
             <option value="0" th:text="'select item name'" ></option>
             <option th:each="item : ${list}"
                     th:value="${item.itemName}"
-                    th:text="${item.itemName}"></option>
+                    th:value="${item.manufacturer}"
+                    th:value="${item.category}"
+                    th:text="${item.unitPrice}"></option>
         </select>
-        <select >
-            <option value="0" th:text="'select size'" ></option>
-            <option th:each="item : ${list}"
-                    th:value="${item.size}"
-                    th:text="${item.size}"></option>
+        <select>
+            <option value="s">s</option>
+            <option value="m">m</option>
+            <option value="l">l</option>
+            <option value="xl">xl</option>
+            <option value="xxl">xxl</option>
         </select>
         <input type="hidden" th:field="*{manufacturer}" th:value="${item.manufacturer}"/>
         <input type="hidden" th:field="*{category}" th:value="${item.category}"/>
         <input type="hidden" th:field="*{unitPrice}" th:value="${item.unitPrice}"/>
         <input type="hidden" th:field="*{id}" th:value="${item.id}"/>
+        <input type="number" name="quantity"/>
         <button type="submit" value="Submit">Get Total</button>
  <!--       <select >
             <option value="0" th:text="'Select item name'" ></option>

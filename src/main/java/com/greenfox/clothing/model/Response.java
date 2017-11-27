@@ -7,7 +7,7 @@ import java.util.List;
 public class Response {
     String result;
     @JsonInclude(value = JsonInclude.Include.NON_EMPTY)
-    List<Warehouse> clothes;
+    List<Product> clothes;
 
     public Response() {
     }
@@ -16,7 +16,7 @@ public class Response {
         this.result = result;
     }
 
-    public Response(String result, List<Warehouse> data) {
+    public Response(String result, List<Product> data) {
 
         this.result = result;
         this.clothes = data;
@@ -30,11 +30,11 @@ public class Response {
         this.result = result;
     }
 
-    public List<Warehouse> getClothes() {
+    public List<Product> getClothes() {
         return clothes;
     }
 
-    public void setClothes(List<Warehouse> clothes) {
+    public void setClothes(List<Product> clothes) {
         this.clothes = clothes;
     }
 }

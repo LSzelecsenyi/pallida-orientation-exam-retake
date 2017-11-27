@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Summary</title>
+</head>
+<body>
+<div>
+    <h1>Green Fox Fashion Web Store</h1>
+    <h2>Summary</h2>
+</div>
+<div>
+    <table>
+        <thead>
+        <tr align="left">
+            <th th:text="'Item name'"></th>
+            <th th:text="'Manufacturer'"></th>
+            <th th:text="'Category'"></th>
+            <th th:text="'Quantity'"></th>
+            <th th:text="'Sub-total price'"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:object="${item}">
+            <td th:text="*{itemName}"></td>
+            <td th:text="*{manufacturer}"></td>
+            <td th:text="*{category}"></td>
+            <td th:text="${quantity}"></td>
+            <td th:text="${total}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{'/warehouse/'}"></a>
+</div>
+</body>
+</html>

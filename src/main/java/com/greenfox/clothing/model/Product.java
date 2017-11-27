@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class Warehouse {
+@Table(name = "warehouse")
+public class Product {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -18,7 +19,7 @@ public class Warehouse {
     @Column(name = "unit_price")
     private double unitPrice;
 
-    public Warehouse(String itemName, String manufacturer, String category, String size, double unitPrice) {
+    public Product(String itemName, String manufacturer, String category, String size, double unitPrice) {
         this.itemName = itemName;
         this.manufacturer = manufacturer;
         this.category = category;
@@ -26,7 +27,7 @@ public class Warehouse {
         this.unitPrice = unitPrice;
     }
 
-    public Warehouse() {
+    public Product() {
 
     }
 
@@ -84,7 +85,7 @@ public class Warehouse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Warehouse warehouse = (Warehouse) o;
+        Product warehouse = (Product) o;
         return Double.compare(warehouse.unitPrice, unitPrice) == 0 &&
                 Objects.equals(id, warehouse.id) &&
                 Objects.equals(itemName, warehouse.itemName) &&

@@ -1,7 +1,7 @@
 package com.greenfox.clothing.controller;
 
 import com.greenfox.clothing.model.Response;
-import com.greenfox.clothing.model.Warehouse;
+import com.greenfox.clothing.model.Product;
 import com.greenfox.clothing.repo.ClothingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping({"", "/"})
-public class MController {
+public class MainController {
 
     @Autowired
     ClothingRepo repo;
@@ -21,25 +21,25 @@ public class MController {
     @GetMapping("/warehouse")
     public String warehouse(Model model) {
         model.addAttribute("list", repo.findAll());
+        model.addAttribute("itemToBuy", new Product());
         return "warehouse";
     }
 
     @PostMapping("warehouse/additem")
-    public String add(@ModelAttribute Warehouse itemToBuy,
+    public String add(@ModelAttribute Product itemToBuy,
                       @RequestParam int quantity,
                       Model model) {
-        List<Warehouse> basket = new ArrayList<>();
-        for (int i = 0; i < quantity; i++) {
-            basket.add(itemToBuy);
-        }
-        model.addAttribute("basket", basket);
+        double total = itemToBuy.getUnitPrice() * quantity;
+        model.addAttribute("item", itemToBuy);
+        model.addAttribute("quantity", quantity);
+        model.addAttribute("total", total);
         return "summary";
     }
 
     @GetMapping("/warehouse/query")
     @ResponseBody
     public Response api(@RequestParam double price, @RequestParam String type) {
-        List<Warehouse> list = new ArrayList<>();
+        List<Product> list = new ArrayList<>();
         if (type.equals("lower")) {
             list=repo.findAllByUnitPriceIsLessThan(price);
         } else if (type.equals("higher")) {
